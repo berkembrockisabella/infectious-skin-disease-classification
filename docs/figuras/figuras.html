@@ -2,18 +2,19 @@
 <html><head><meta charset="utf-8">
 <style>
 :root{
-  --blue-bg:#EAF2FC; --blue-bd:#A9C8EE; --blue-tx:#2563A8;
-  --green-bg:#E8F6EE; --green-bd:#9ED5B5; --green-tx:#2E7D52;
-  --purple-bg:#F0ECFB; --purple-bd:#C5B6EE; --purple-tx:#5B3FB0;
-  --orange-bg:#FDF1E4; --orange-bd:#F2C796; --orange-tx:#B5581A;
-  --teal-bg:#E6F5F6; --teal-bd:#99D3D8; --teal-tx:#1F7A82;
-  --gray-bg:#F2F4F7; --gray-bd:#C9CFD8; --gray-tx:#4A5361;
-  --red-bg:#FCECEC; --red-bd:#EDB2B2; --red-tx:#B23A3A;
-  --ink:#1F2937; --muted:#5B6474; --arrow:#5B6474;
+  --bg:#0F1420;
+  --blue-bg:#15243A; --blue-bd:#3C6BA8; --blue-tx:#8EBCF5;
+  --green-bg:#122B24; --green-bd:#2F7A55; --green-tx:#7FD4A4;
+  --purple-bg:#221B3A; --purple-bd:#6A57B6; --purple-tx:#BBA8F6;
+  --orange-bg:#2E2117; --orange-bd:#A6612B; --orange-tx:#F2B37C;
+  --teal-bg:#10292C; --teal-bd:#2D8189; --teal-tx:#7FD3DA;
+  --gray-bg:#1B212C; --gray-bd:#4A5361; --gray-tx:#C9D1DC;
+  --red-bg:#2E1717; --red-bd:#A64646; --red-tx:#F2A3A3;
+  --ink:#E6EAF0; --muted:#9AA4B2; --arrow:#9AA4B2;
 }
 *{box-sizing:border-box}
-body{margin:0;background:#fff;font-family:Inter,"DejaVu Sans",sans-serif;color:var(--ink)}
-.fig{background:#fff;padding:28px 32px 26px;display:inline-block}
+body{margin:0;background:var(--bg);font-family:Inter,"DejaVu Sans",sans-serif;color:var(--ink)}
+.fig{background:var(--bg);padding:28px 32px 26px;display:inline-block}
 .titulo{font-size:22px;font-weight:700;margin:0 0 4px}
 .sub{font-size:14px;color:var(--muted);margin:0 0 22px;font-style:italic}
 .row{display:flex;align-items:stretch}
@@ -51,123 +52,6 @@ table.cond td.rot{text-align:left;font-weight:600;border:1.5px solid;min-width:2
 .secao{font-size:15px;font-weight:700;margin:6px 0 10px}
 </style></head><body>
 
-<!-- ================= FIGURA 1: PIPELINE ================= -->
-<div class="fig" id="fig1">
-  <p class="titulo">Pipeline do experimento</p>
-  <p class="sub">Da coleta das bases à avaliação no conjunto de teste</p>
-  <div class="row">
-    <div class="card blue">
-      <span class="chip">DADOS</span>
-      <div class="ic"><svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#2563A8" stroke-width="2.4"><ellipse cx="23" cy="10" rx="14" ry="5"/><path d="M9 10v26c0 2.8 6.3 5 14 5s14-2.2 14-5V10"/><path d="M9 19c0 2.8 6.3 5 14 5s14-2.2 14-5M9 28c0 2.8 6.3 5 14 5s14-2.2 14-5"/></svg></div>
-      <h3>Coleta das bases</h3>
-      <ul><li>Kaggle: Dataset_Gabungan (1.429)</li><li>Mendeley: MCVSLD (11.325)</li><li>4 classes em comum</li></ul>
-    </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
-    <div class="card orange">
-      <span class="chip">ETAPA 01</span>
-      <div class="ic"><svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#B5581A" stroke-width="2.6"><circle cx="19" cy="19" r="12"/><path d="M28 28l11 11" stroke-linecap="round"/></svg></div>
-      <h3>Análise exploratória</h3>
-      <ul><li>Classes, fontes e resolução</li><li>Hash perceptual (dHash)</li><li>Detecção da mesma foto</li></ul>
-    </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
-    <div class="card green">
-      <span class="chip">ETAPA 02</span>
-      <div class="ic"><svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#2E7D52" stroke-width="2.4" stroke-linejoin="round"><path d="M6 8h34L27 24v12l-8 4V24z"/></svg></div>
-      <h3>Pré-processamento</h3>
-      <ul><li>Uma imagem por foto</li><li>Divisão 70/15/15 estratificada</li><li>RGB · 256×256 · PNG</li></ul>
-    </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
-    <div class="card purple">
-      <span class="chip">ETAPAS 03 · 04</span>
-      <div class="ic"><svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#5B3FB0" stroke-width="2"><g><path d="M9 10L23 6M9 10L23 23M9 10L37 15M9 36L23 23M9 36L23 40M9 36L37 31M23 6L37 15M23 6L37 31M23 23L37 15M23 23L37 31M23 40L37 15M23 40L37 31M9 23L23 6M9 23L23 23M9 23L23 40" stroke-opacity=".55"/></g><g fill="#F0ECFB" stroke-width="2.4"><circle cx="9" cy="10" r="3.6"/><circle cx="9" cy="23" r="3.6"/><circle cx="9" cy="36" r="3.6"/><circle cx="23" cy="6" r="3.6"/><circle cx="23" cy="23" r="3.6"/><circle cx="23" cy="40" r="3.6"/><circle cx="37" cy="15" r="3.6"/><circle cx="37" cy="31" r="3.6"/></g></svg></div>
-      <h3>Treinamento</h3>
-      <ul><li>Baseline: CNN do zero</li><li>ResNet50 com fine-tuning</li><li>Busca de lr + early stopping</li></ul>
-    </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
-    <div class="card teal">
-      <span class="chip">ETAPA 05</span>
-      <div class="ic"><svg width="46" height="46" viewBox="0 0 46 46" fill="#1F7A82"><rect x="7" y="26" width="8" height="14" rx="1.5"/><rect x="19" y="16" width="8" height="24" rx="1.5"/><rect x="31" y="7" width="8" height="33" rx="1.5"/></svg></div>
-      <h3>Avaliação</h3>
-      <ul><li>F1-macro, precisão, recall</li><li>Matriz de confusão</li><li>Análise de erros</li></ul>
-    </div>
-  </div>
-  <div class="span"><svg width="10" height="12"><path d="M9 1L1 6l8 5z" fill="#5B6474"/></svg><div class="ln"></div><span>O conjunto de teste só é usado na etapa 05</span><div class="ln"></div><svg width="10" height="12"><path d="M1 1l8 5-8 5z" fill="#5B6474"/></svg></div>
-</div>
-
-<!-- ================= FIGURA 2: DADOS ================= -->
-<div class="fig" id="fig2">
-  <p class="titulo">Integração das bases e remoção de cópias</p>
-  <p class="sub">Só é removida a imagem que é a mesma foto de outra</p>
-  <div style="display:flex;align-items:flex-start;gap:0">
-    <!-- fontes -->
-    <div class="card blue" style="width:250px;padding:14px">
-      <h3>Fontes</h3>
-      <div class="box" style="background:#fff;border-color:var(--blue-bd);text-align:left;margin-bottom:8px;padding:9px 12px">
-        <p><b>Dataset_1</b> (Kaggle)<br>659 imagens · JPG 256²</p></div>
-      <div class="box" style="background:#fff;border-color:var(--blue-bd);text-align:left;margin-bottom:8px;padding:9px 12px">
-        <p><b>Dataset_2 = MSID</b> (Kaggle)<br>770 imagens · PNG 224²</p></div>
-      <div class="box" style="background:#fff;border-color:var(--blue-bd);text-align:left;padding:9px 12px">
-        <p><b>MCVSLD</b> (Mendeley)<br>7.920 imagens nas 4 classes<br>→ <b>528 originais</b> (15 versões/foto)</p></div>
-    </div>
-    <div class="arrow" style="height:262px"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
-    <!-- candidatas -->
-    <div style="height:262px;display:flex;align-items:center">
-      <div class="box purple" style="width:170px;padding:16px 12px">
-        <svg width="38" height="38" viewBox="0 0 46 46" fill="none" stroke="#5B3FB0" stroke-width="2.6"><rect x="6" y="9" width="34" height="28" rx="4"/><circle cx="16" cy="19" r="4"/><path d="M8 34l11-10 7 6 6-5 8 8"/></svg>
-        <h3>Imagens candidatas</h3><div class="big" style="color:var(--purple-tx)">1.957</div>
-        <p>Chickenpox · Measles<br>Monkeypox · Normal</p>
-      </div>
-    </div>
-    <div class="arrow" style="height:262px"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
-    <!-- decisao -->
-    <div style="display:flex;flex-direction:column;align-items:center;width:250px">
-      <div style="height:262px;display:flex;align-items:center">
-        <svg width="250" height="200" viewBox="0 0 250 200">
-          <polygon points="125,6 244,100 125,194 6,100" fill="#E8F6EE" stroke="#9ED5B5" stroke-width="2"/>
-          <text x="125" y="78" text-anchor="middle" font-size="15" font-weight="700" fill="#2E7D52">É a mesma foto</text>
-          <text x="125" y="96" text-anchor="middle" font-size="15" font-weight="700" fill="#2E7D52">de outra imagem?</text>
-          <text x="125" y="117" text-anchor="middle" font-size="11.5" fill="#4A5361">dHash ≤ 27 bits</text>
-          <text x="125" y="132" text-anchor="middle" font-size="11.5" fill="#4A5361">ou mesmo nome</text>
-          <text x="125" y="146" text-anchor="middle" font-size="11.5" fill="#4A5361">no MCVSLD</text>
-        </svg>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-top:-34px">
-        <svg width="14" height="40"><path d="M7 1v32" stroke="#5B6474" stroke-width="2"/><path d="M2 30l5 8 5-8z" fill="#5B6474"/></svg>
-        <span style="font-size:13px;font-weight:700;color:var(--muted)">Sim</span>
-      </div>
-      <div class="box gray" style="width:190px;margin-top:4px">
-        <h3>Remove a cópia</h3><div class="big" style="color:var(--gray-tx);font-size:22px">683</div>
-        <p>inclui 1 foto com<br>rótulos conflitantes</p>
-      </div>
-    </div>
-    <!-- nao -->
-    <div style="height:262px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:56px">
-      <span style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:2px">Não</span>
-      <svg width="44" height="14"><path d="M1 7h36" stroke="#5B6474" stroke-width="2"/><path d="M35 2l7 5-7 5z" fill="#5B6474"/></svg>
-      <span style="height:19px"></span>
-    </div>
-    <div style="height:262px;display:flex;align-items:center">
-      <div class="box green" style="width:170px;padding:16px 12px">
-        <svg width="38" height="38" viewBox="0 0 46 46" fill="none" stroke="#2E7D52" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="23" cy="23" r="17"/><path d="M15 23l6 6 11-12"/></svg>
-        <h3>Base final</h3><div class="big" style="color:var(--green-tx)">1.274</div>
-        <p>fotos únicas<br>RGB · 256×256 · PNG</p>
-      </div>
-    </div>
-    <div class="arrow" style="height:262px"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
-    <!-- divisao -->
-    <div style="height:262px;display:flex;align-items:center">
-      <div class="card orange" style="width:230px;padding:14px">
-        <h3>Divisão estratificada</h3>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div class="box" style="background:#fff;border-color:var(--orange-bd);display:flex;justify-content:space-between;padding:8px 12px"><p><b>Treino</b> · 70%</p><p><b>891</b></p></div>
-          <div class="box" style="background:#fff;border-color:var(--orange-bd);display:flex;justify-content:space-between;padding:8px 12px"><p><b>Validação</b> · 15%</p><p><b>191</b></p></div>
-          <div class="box" style="background:#fff;border-color:var(--orange-bd);display:flex;justify-content:space-between;padding:8px 12px"><p><b>Teste</b> · 15%</p><p><b>192</b></p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ================= FIGURA 3: ARQUITETURAS ================= -->
 <div class="fig" id="fig3">
   <p class="titulo">Arquiteturas comparadas</p>
@@ -179,19 +63,19 @@ table.cond td.rot{text-align:left;font-weight:600;border:1.5px solid;min-width:2
       <svg width="96" height="96" viewBox="0 0 96 96"><defs><radialGradient id="pele" cx=".5" cy=".45" r=".7"><stop offset="0" stop-color="#F3C7A8"/><stop offset="1" stop-color="#D99A78"/></radialGradient></defs><rect width="96" height="96" rx="8" fill="url(#pele)"/><g fill="#C2574A" fill-opacity=".75"><circle cx="30" cy="28" r="4"/><circle cx="58" cy="22" r="3"/><circle cx="66" cy="52" r="5"/><circle cx="38" cy="62" r="3.5"/><circle cx="22" cy="78" r="3"/><circle cx="74" cy="78" r="3.5"/><circle cx="50" cy="42" r="2.5"/></g><g fill="#FBE3D4"><circle cx="65" cy="51" r="1.8"/><circle cx="29" cy="27" r="1.4"/></g></svg>
       <p class="cap" style="color:var(--ink)">Foto de pele<br>224 × 224 × 3</p>
     </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
+    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#9AA4B2" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#9AA4B2"/></svg></div>
     <div class="card blue" style="width:520px;padding:12px 16px">
       <h3>Extração de características</h3>
       <svg id="cubos1" width="488" height="150"></svg>
       <p class="cap" style="color:var(--blue-tx)">4 blocos: Conv 3×3 + BatchNorm + ReLU + MaxPool 2×2</p>
     </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
+    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#9AA4B2" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#9AA4B2"/></svg></div>
     <div class="card green" style="width:200px;padding:12px">
       <h3>Representação</h3>
       <svg id="vet1" width="168" height="110"></svg>
       <p class="cap" style="color:var(--green-tx)">Pooling global (256)<br>+ Dropout 0,3 + Linear</p>
     </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
+    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#9AA4B2" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#9AA4B2"/></svg></div>
     <div class="card purple saida" style="width:170px;padding:12px 14px"></div>
   </div>
 
@@ -202,47 +86,21 @@ table.cond td.rot{text-align:left;font-weight:600;border:1.5px solid;min-width:2
       <svg width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="8" fill="url(#pele)"/><g fill="#C2574A" fill-opacity=".75"><circle cx="30" cy="28" r="4"/><circle cx="58" cy="22" r="3"/><circle cx="66" cy="52" r="5"/><circle cx="38" cy="62" r="3.5"/><circle cx="22" cy="78" r="3"/><circle cx="74" cy="78" r="3.5"/><circle cx="50" cy="42" r="2.5"/></g><g fill="#FBE3D4"><circle cx="65" cy="51" r="1.8"/><circle cx="29" cy="27" r="1.4"/></g></svg>
       <p class="cap" style="color:var(--ink)">Foto de pele<br>224 × 224 × 3</p>
     </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
+    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#9AA4B2" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#9AA4B2"/></svg></div>
     <div class="card orange" style="width:520px;padding:12px 16px">
       <h3>Extração de características (ResNet50)</h3>
       <svg id="cubos2" width="488" height="150"></svg>
       <p class="cap" style="color:var(--orange-tx)">Blocos residuais com pesos do ImageNet · todas as camadas ajustadas</p>
     </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
+    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#9AA4B2" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#9AA4B2"/></svg></div>
     <div class="card green" style="width:200px;padding:12px">
       <h3>Representação</h3>
       <svg id="vet2" width="168" height="110"></svg>
       <p class="cap" style="color:var(--green-tx)">Pooling global (2048)<br>+ <b>nova</b> camada Linear</p>
     </div>
-    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#5B6474" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#5B6474"/></svg></div>
+    <div class="arrow"><svg width="30" height="14"><path d="M1 7h24" stroke="#9AA4B2" stroke-width="2"/><path d="M22 2l7 5-7 5z" fill="#9AA4B2"/></svg></div>
     <div class="card purple saida" style="width:170px;padding:12px 14px"></div>
   </div>
-</div>
-
-<!-- ================= FIGURA 4: CONDICOES ================= -->
-<div class="fig" id="fig4">
-  <p class="titulo">Condições experimentais</p>
-  <p class="sub">O que muda entre os modelos e as bases, e o F1-macro obtido na validação</p>
-  <table class="cond">
-    <tr>
-      <th style="background:#fff;border-color:#fff;text-align:left;font-size:14px;vertical-align:bottom">Condição</th>
-      <th style="background:var(--green-bg);border-color:var(--green-bd);color:var(--green-tx)">Base sem cópias
-        <svg width="28" height="28" viewBox="0 0 46 46" fill="none" stroke="#2E7D52" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="23" cy="23" r="17"/><path d="M15 23l6 6 11-12"/></svg></th>
-      <th style="background:var(--orange-bg);border-color:var(--orange-bd);color:var(--orange-tx)">Pré-treino ImageNet
-        <svg width="28" height="28" viewBox="0 0 46 46" fill="none" stroke="#B5581A" stroke-width="2.6"><rect x="6" y="9" width="34" height="28" rx="4"/><circle cx="16" cy="19" r="4"/><path d="M8 34l11-10 7 6 6-5 8 8"/></svg></th>
-      <th style="background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue-tx)">Dropout
-        <svg width="28" height="28" viewBox="0 0 46 46" fill="none" stroke="#2563A8" stroke-width="2.4"><circle cx="10" cy="12" r="4"/><circle cx="10" cy="34" r="4"/><circle cx="36" cy="12" r="4"/><circle cx="36" cy="34" r="4" stroke-dasharray="3 3"/><path d="M14 12h18M14 34h8" /></svg></th>
-      <th style="background:var(--purple-bg);border-color:var(--purple-bd);color:var(--purple-tx)">Busca de lr
-        <svg width="28" height="28" viewBox="0 0 46 46" fill="none" stroke="#5B3FB0" stroke-width="2.6" stroke-linecap="round"><path d="M8 12h30M8 23h30M8 34h30"/><circle cx="16" cy="12" r="4" fill="#F0ECFB"/><circle cx="30" cy="23" r="4" fill="#F0ECFB"/><circle cx="20" cy="34" r="4" fill="#F0ECFB"/></svg></th>
-      <th style="background:var(--teal-bg);border-color:var(--teal-bd);color:var(--teal-tx)">F1-macro (val.)
-        <svg width="28" height="28" viewBox="0 0 46 46" fill="#1F7A82"><rect x="7" y="26" width="8" height="14" rx="1.5"/><rect x="19" y="16" width="8" height="24" rx="1.5"/><rect x="31" y="7" width="8" height="33" rx="1.5"/></svg></th>
-    </tr>
-    <tr><td class="rot" style="background:var(--red-bg);border-color:var(--red-bd);color:var(--red-tx)">A. Baseline · base com vazamento</td><td class="no">—</td><td class="no">—</td><td class="ok">✓</td><td class="no">—</td><td class="res">~0,56</td></tr>
-    <tr><td class="rot" style="background:var(--red-bg);border-color:var(--red-bd);color:var(--red-tx)">B. Fine-tuning · base com vazamento</td><td class="no">—</td><td class="ok">✓</td><td class="no">—</td><td class="ok">✓</td><td class="res">0,979 <span style="font-weight:400;font-size:12px;color:var(--red-tx)">(inflado)</span></td></tr>
-    <tr><td class="rot" style="background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue-tx)">C. Baseline · base sem cópias</td><td class="ok">✓</td><td class="no">—</td><td class="ok">✓</td><td class="no">—</td><td class="res">0,515</td></tr>
-    <tr><td class="rot" style="background:var(--green-bg);border-color:var(--green-bd);color:var(--green-tx)">D. Fine-tuning · base sem cópias</td><td class="ok">✓</td><td class="ok">✓</td><td class="no">—</td><td class="ok">✓</td><td class="res">0,881</td></tr>
-  </table>
-  <p class="nota">Comum a todas: augmentation, pesos de classe na perda e early stopping pelo F1-macro da validação.<br>A e B usam só o Dataset_Gabungan (1.429 imagens, divisão aleatória); C e D usam Gabungan + MCVSLD sem cópias (1.274 fotos).</p>
 </div>
 
 <script>
@@ -254,21 +112,21 @@ function cubo(svg, x, yBase, w, h, d, cor, borda, rot1, rot2, corTx){
   add('polygon',{points:`${x+w},${y} ${x+w+d},${y-d*0.6} ${x+w+d},${y+h-d*0.6} ${x+w},${y+h}`,fill:cor,'fill-opacity':.8,stroke:borda,'stroke-width':1.2});
   add('rect',{x:x,y:y,width:w,height:h,fill:cor,stroke:borda,'stroke-width':1.2});
   const t1=add('text',{x:x+(w+d)/2,y:yBase+h/2+18,'text-anchor':'middle','font-size':12,'font-weight':700,fill:corTx});t1.textContent=rot1;
-  const t2=add('text',{x:x+(w+d)/2,y:yBase+h/2+33,'text-anchor':'middle','font-size':11,fill:'#5B6474'});t2.textContent=rot2;
+  const t2=add('text',{x:x+(w+d)/2,y:yBase+h/2+33,'text-anchor':'middle','font-size':11,fill:'#9AA4B2'});t2.textContent=rot2;
 }
 function camadas(id, itens, cor, borda, corTx){
   const svg=document.getElementById(id); const slot=488/itens.length;
   itens.forEach(([w,h,d,r1,r2],i)=>{const x=slot*i+(slot-(w+d))/2; cubo(svg,x,62,w,h,d,cor,borda,r1,r2,corTx);});
 }
-camadas('cubos1',[[14,96,26,'32 filtros','112×112'],[18,72,22,'64 filtros','56×56'],[24,50,17,'128 filtros','28×28'],[30,32,12,'256 filtros','14×14']],'#BFD6F3','#6E9BD6','#2563A8');
-camadas('cubos2',[[16,96,26,'conv2_x','256 · 56×56'],[22,72,22,'conv3_x','512 · 28×28'],[28,50,17,'conv4_x','1024 · 14×14'],[34,32,12,'conv5_x','2048 · 7×7']],'#F6CFA6','#D58A4A','#B5581A');
+camadas('cubos1',[[14,96,26,'32 filtros','112×112'],[18,72,22,'64 filtros','56×56'],[24,50,17,'128 filtros','28×28'],[30,32,12,'256 filtros','14×14']],'#3A6297','#8EBCF5','#8EBCF5');
+camadas('cubos2',[[16,96,26,'conv2_x','256 · 56×56'],[22,72,22,'conv3_x','512 · 28×28'],[28,50,17,'conv4_x','1024 · 14×14'],[34,32,12,'conv5_x','2048 · 7×7']],'#8C5426','#F2B37C','#F2B37C');
 function vetor(id, cor, borda, n){
   const svg=document.getElementById(id); const ns='http://www.w3.org/2000/svg';
   for(let i=0;i<n;i++){const r=document.createElementNS(ns,'rect');r.setAttribute('x',18+i*34);r.setAttribute('y',14);r.setAttribute('width',18);r.setAttribute('height',82);r.setAttribute('rx',3);r.setAttribute('fill',cor);r.setAttribute('fill-opacity',0.45+0.15*i);r.setAttribute('stroke',borda);svg.appendChild(r);}
 }
-vetor('vet1','#A6DABD','#5DAE82',4); vetor('vet2','#A6DABD','#5DAE82',4);
+vetor('vet1','#2F7A55','#7FD4A4',4); vetor('vet2','#2F7A55','#7FD4A4',4);
 document.querySelectorAll('.saida').forEach(el=>{
-  el.innerHTML='<h3>Saída</h3>'+['Chickenpox','Measles','Monkeypox','Normal'].map(c=>`<div style="display:flex;align-items:center;gap:9px;margin:9px 4px;font-size:13.5px"><svg width="16" height="16"><circle cx="8" cy="8" r="6.5" fill="#fff" stroke="#5B3FB0" stroke-width="1.6"/></svg>${c}</div>`).join('')+'<p class="cap" style="color:#5B3FB0;margin-top:8px">Softmax · 4 classes</p>';
+  el.innerHTML='<h3>Saída</h3>'+['Chickenpox','Measles','Monkeypox','Normal'].map(c=>`<div style="display:flex;align-items:center;gap:9px;margin:9px 4px;font-size:13.5px"><svg width="16" height="16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#BBA8F6" stroke-width="1.6"/></svg>${c}</div>`).join('')+'<p class="cap" style="color:#BBA8F6;margin-top:8px">Softmax · 4 classes</p>';
 });
 </script>
 </body></html>

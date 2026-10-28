@@ -124,7 +124,7 @@ O conjunto de teste só é usado na etapa 5.
 
 As duas redes recebem a mesma entrada e produzem a mesma saída; o que muda é como as características são extraídas.
 
-![Arquiteturas comparadas](docs/figuras/fig3_arquiteturas.png)
+![Arquiteturas comparadas](docs/figuras/arquiteturas_comparadas.png)
 
 - **Baseline (etapa 3):** 4 blocos `Conv → BatchNorm → ReLU → MaxPool` (32 → 256 filtros), pooling global, dropout de 0,3 e camada linear. Adam com lr 1e-3, até 30 épocas. Mostra até onde se chega aprendendo tudo do zero.
 - **Fine-tuning (etapa 4):** ResNet50 com pesos do ImageNet; a última camada é trocada para 4 classes e **todas as camadas são ajustadas**. Reaproveita o que a rede já sabe sobre bordas, texturas e formas. A taxa de aprendizado é escolhida por **busca em {1e-3, 1e-4, 1e-5}** — a faixa usada nos artigos de referência.
